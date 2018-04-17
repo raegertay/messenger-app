@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
-  def index; end
+  def index
+    @users = User.where.not(id: current_user.id)
+  end
 end
