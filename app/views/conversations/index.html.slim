@@ -1,6 +1,6 @@
 p = "Welcome #{current_user.username}!"
 h1 My Conversations
 
-ul
+ul.users
   - @users.each do |user|
-    li = user.username
+    = content_tag :li, user.username, id: "user_#{user.id}", class: "#{'text-success' if @online_user_ids.include?(user.id.to_s)}"

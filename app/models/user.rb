@@ -26,4 +26,14 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+
+  def appear
+    $redis.sadd('appearance', id)
+    id
+  end
+
+  def disappear
+    $redis.srem('appearance', id)
+    id
+  end
 end
