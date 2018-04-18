@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   get '/user/:user_id/conversation', to: 'conversations#show', as: 'conversation_user'
 
+  resources :messages, only: [:create]
+
   root to: redirect('/users/sign_in')
 end

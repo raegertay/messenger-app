@@ -1,4 +1,9 @@
 p = "You are chatting with #{@other_user.username}"
 
 - @messages.each do |message|
-  p "<b>#{message.user.name}</b>: #{message.content}".html_safe
+  p = "<b>#{message.user.username}</b>: #{message.content}".html_safe
+
+= form_for @message, url: messages_path, remote: true do |f|
+  = f.text_area :content, autofocus: true
+  = f.hidden_field :conversation_id, value: @conversation.id
+  = f.submit

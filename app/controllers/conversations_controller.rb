@@ -5,6 +5,7 @@ class ConversationsController < ApplicationController
 
   def show
     @messages = @conversation.messages
+    @message = Message.new
   end
 
   private
