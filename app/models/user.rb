@@ -40,4 +40,13 @@ class User < ApplicationRecord
     $redis.srem('appearance', id)
     id
   end
+
+  def find_conversation(other_user)
+    conversations.each do |conversation|
+      conversation.users.each do |user|
+        return conversation if user == other_user
+      end
+    end
+    nil
+  end
 end
