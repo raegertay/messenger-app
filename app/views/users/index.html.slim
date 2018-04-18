@@ -6,8 +6,9 @@
 
       ul.users
         - @users.each do |user|
-          = content_tag :li, id: "user_#{user.id}", class: "#{'text-success' if @online_user_ids.include?(user.id.to_s)}" do
-            = link_to user.username, conversation_user_path(user)
+          = link_to conversation_user_path(user), remote: true do
+            = content_tag :li, user.username, id: "user_#{user.id}", class: "#{'text-success' if @online_user_ids.include?(user.id.to_s)}"
     
     .col-8
-      h1 Conversation here
+      .conversation
+        p Start chatting now!

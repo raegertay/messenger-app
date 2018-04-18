@@ -1,0 +1,4 @@
+p = "You are chatting with #{@other_user.username}"
+
+- @messages.each do |message|
+  p "<b>#{message.user.name}</b>: #{message.content}".html_safe
