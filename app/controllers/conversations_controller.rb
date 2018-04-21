@@ -6,6 +6,7 @@ class ConversationsController < ApplicationController
   def show
     @messages = @conversation.messages
     @message = Message.new
+    @online_user_ids = $redis.smembers('appearance')
   end
 
   private

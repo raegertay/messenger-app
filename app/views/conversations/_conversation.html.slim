@@ -1,13 +1,17 @@
-p = "You are chatting with #{@other_user.username}"
+.card
+  .card-header
+    p.m-0.username = @other_user.username
+    = content_tag :small, 'online', class: 'text-success' if @online_user_ids.include?(@other_user.id.to_s)
 
-- if @messages.any?
-  .messages
-    - @messages.each do |message|
-      p = "<b>#{message.user.username}</b>: #{message.content}".html_safe
+  .card-body
+    - if @messages.any?
+      .messages
+        - @messages.each do |message|
+          = content_tag :span, message.content, class: "message #{current_user == message.user ? 'current-user-message' : 'other-user-message'}"
 
-= form_for @message, url: messages_path, remote: true do |f|
-  = f.text_area :content, autofocus: true
-  = f.hidden_field :conversation_id, value: @conversation.id, id: "conversation_id"
-  = f.submit
+    = form_for @message, url: messages_path, remote: true do |f|
+      = f.text_area :content, autofocus: true
+      = f.hidden_field :conversation_id, value: @conversation.id, id: "conversation_id"
+      = f.submit
 
 = javascript_include_tag "channels/conversations"

@@ -1,14 +1,10 @@
 .container-fluid
-  .row
-    .col-4
-      p = "Welcome #{current_user.username}!"
-      h1 My Conversations
-
-      ul.users
+  .row.justify-content-center
+    .col-3
+      .users.list-group
         - @users.each do |user|
-          = link_to conversation_user_path(user), remote: true do
-            = content_tag :li, user.username, id: "user_#{user.id}", class: "#{'text-success' if @online_user_ids.include?(user.id.to_s)}"
+          = link_to user.username, conversation_user_path(user), id: "user_#{user.id}", class: "list-group-item list-group-item-action #{'text-success' if @online_user_ids.include?(user.id.to_s)}", remote: true
     
-    .col-8
+    .col-6
       .conversation
         p Start chatting now!

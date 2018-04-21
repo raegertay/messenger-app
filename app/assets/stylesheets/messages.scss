@@ -1,3 +1,24 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 0.4em;
+  margin-bottom: 0.5em;
+  border-radius: 0.2rem;
+}
+
+.current-user-message {
+  background-color: lightgreen;
+  align-self: flex-end;
+}
+
+.other-user-message {
+  background-color: lightgrey;
+  align-self: flex-start;
+}

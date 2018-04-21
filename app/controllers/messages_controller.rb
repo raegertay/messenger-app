@@ -8,7 +8,6 @@ class MessagesController < ApplicationController
       content: message.content,
       username: current_user.username
     })
-
   end
 
   private
