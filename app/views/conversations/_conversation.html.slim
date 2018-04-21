@@ -9,9 +9,13 @@
         - @messages.each do |message|
           = content_tag :span, message.content, class: "message #{current_user == message.user ? 'current-user-message' : 'other-user-message'}"
 
+  .card-footer
     = form_for @message, url: messages_path, remote: true do |f|
-      = f.text_area :content, autofocus: true
-      = f.hidden_field :conversation_id, value: @conversation.id, id: "conversation_id"
-      = f.submit
+      .input-group
+        = f.text_field :content, autofocus: true, class: 'form-control form-control-sm'
+        = f.hidden_field :conversation_id, value: @conversation.id, id: "conversation_id"
+        .input-group-append
+          = f.submit 'Send', class: 'btn btn-sm btn-primary', disabled: true
 
 = javascript_include_tag "channels/conversations"
+= javascript_include_tag 'conversations'
