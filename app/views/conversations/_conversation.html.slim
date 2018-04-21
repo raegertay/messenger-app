@@ -3,7 +3,7 @@
     p.m-0.username = @other_user.username
     = content_tag :small, 'online', class: 'text-success' if @online_user_ids.include?(@other_user.id.to_s)
 
-  .card-body
+  .card-body.messages-container
     - if @messages.any?
       .messages
         - @messages.each do |message|
