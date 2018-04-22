@@ -1,7 +1,7 @@
-.card
+= content_tag :div, '', class: "card conversation-user-#{@other_user.id}"
   .card-header
     p.m-0.username = @other_user.username
-    = content_tag :small, 'online', class: 'text-success' if @online_user_ids.include?(@other_user.id.to_s)
+    = content_tag :small, 'online', class: 'text-success online-indicator', style: "#{'visibility: visible' if @online_user_ids.include?(@other_user.id.to_s)}"
 
   .card-body.messages-container
     - if @messages.any?

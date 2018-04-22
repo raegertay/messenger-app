@@ -6,6 +6,10 @@
   height: 100%;
 }
 
+.card-header .online-indicator {
+  visibility: hidden;
+}
+
 .messages-container {
   // height: 100vh;
   overflow-y: auto;

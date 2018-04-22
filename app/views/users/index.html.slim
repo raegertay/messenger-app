@@ -2,8 +2,17 @@
   .row.justify-content-center
     .col-3
       .users.list-group
+        .list-group-item.text-center.bg-primary.text-white
+          = "Welcome #{current_user.username}!"
         - @users.each do |user|
-          = link_to user.username, conversation_user_path(user), id: "user_#{user.id}", class: "list-group-item list-group-item-action #{'text-success' if @online_user_ids.include?(user.id.to_s)}", remote: true
+          = link_to conversation_user_path(user), id: "user_#{user.id}", class: "list-group-item list-group-item-action", remote: true do
+            .d-flex.align-items-center
+              = user.username
+              | &nbsp;
+              - if @online_user_ids.include?(user.id.to_s)
+                i.fas.fa-circle.appearance-indicator style="visibility: visible;"
+              - else
+                i.fas.fa-circle.appearance-indicator
     
     .col-6
       .conversation
